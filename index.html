@@ -70,23 +70,23 @@
   }
   nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:16px 24px;max-width:1120px;margin:0 auto;
+    padding:10px 24px;max-width:1120px;margin:0 auto;
   }
-  .brand{font-size:19px;font-weight:800;display:flex;align-items:center;gap:8px;}
-  .brand .dot{width:9px;height:9px;border-radius:3px;background:var(--green);transform:rotate(45deg);}
-  .nav-links{display:flex;align-items:center;gap:32px;}
-  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);transition:color .2s;}
+  .brand{font-size:16.5px;font-weight:800;display:flex;align-items:center;gap:7px;}
+  .brand .dot{width:7px;height:7px;border-radius:2px;background:var(--green);transform:rotate(45deg);}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{font-size:13.5px;font-weight:500;color:var(--ink-soft);transition:color .2s;}
   .nav-links a:hover{color:var(--ink);}
-  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-right{display:flex;align-items:center;gap:12px;}
   .icon-btn{
-    width:38px;height:38px;border-radius:10px;border:1px solid var(--border);
+    width:32px;height:32px;border-radius:9px;border:1px solid var(--border);
     display:flex;align-items:center;justify-content:center;background:var(--surface);
     cursor:pointer;color:var(--ink-soft);
   }
   .icon-btn:hover{color:var(--ink);}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:11px 20px;border-radius:10px;font-weight:600;font-size:14.5px;
+    padding:9px 16px;border-radius:9px;font-weight:600;font-size:13.5px;
     cursor:pointer;border:1px solid transparent;white-space:nowrap;
     transition:transform .15s ease, background .2s ease, border-color .2s ease;
   }
@@ -98,15 +98,15 @@
   .menu-toggle{display:none;}
 
   /* HERO */
-  .hero{padding:88px 0 64px;}
+  .hero{padding:56px 0 40px;}
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
   .hero h1{font-size:clamp(34px,4.4vw,54px);font-weight:800;line-height:1.08;margin-top:18px;}
   .hero p.lead{font-size:17.5px;color:var(--ink-soft);margin-top:20px;max-width:460px;line-height:1.6;}
   .hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
 
-  .hero-art{position:relative;height:420px;}
+  .hero-art{position:relative;height:320px;}
   .card{
-    position:absolute;width:180px;height:320px;border-radius:20px;
+    position:absolute;width:150px;height:250px;border-radius:18px;
     box-shadow:var(--shadow-lg);border:1px solid var(--border);
     background:linear-gradient(160deg,var(--green-deep),var(--green));
     overflow:hidden;
@@ -121,11 +121,11 @@
   .card .play::after{content:"";border-left:14px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px;}
   .card .caption{position:absolute;bottom:16px;left:14px;right:14px;height:8px;border-radius:4px;background:rgba(255,255,255,0.22);}
   .card .caption.short{width:55%;}
-  .card-a{left:0;top:40px;transform:rotate(-9deg);z-index:1;background:linear-gradient(160deg,#0e2c22,#123f2e);opacity:.85;}
-  .card-b{left:100px;top:0;transform:rotate(4deg);z-index:2;}
-  .card-c{left:60px;top:64px;transform:rotate(-2deg);z-index:3;background:linear-gradient(165deg,var(--green),var(--green-bright));}
+  .card-a{left:0;top:30px;transform:rotate(-9deg);z-index:1;background:linear-gradient(160deg,#0e2c22,#123f2e);opacity:.85;}
+  .card-b{left:85px;top:0;transform:rotate(4deg);z-index:2;}
+  .card-c{left:50px;top:50px;transform:rotate(-2deg);z-index:3;background:linear-gradient(165deg,var(--green),var(--green-bright));}
   .badge{
-    position:absolute;right:6px;bottom:34px;z-index:4;
+    position:absolute;right:6px;bottom:20px;z-index:4;
     background:var(--bg);border:1px solid var(--border);border-radius:12px;
     padding:10px 14px;box-shadow:var(--shadow-lg);
     display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;
@@ -138,19 +138,19 @@
   .strip p{margin:0;font-size:14.5px;color:var(--ink-soft);}
   .strip strong{color:var(--ink);}
 
-  section{padding:96px 0;}
-  .section-head{max-width:560px;margin-bottom:48px;}
+  section{padding:56px 0;}
+  .section-head{max-width:560px;margin-bottom:32px;}
   .section-head h2{font-size:clamp(26px,3vw,34px);font-weight:800;margin-top:14px;}
   .section-head p{color:var(--ink-soft);margin-top:12px;font-size:15.5px;line-height:1.6;}
 
   /* SERVICES */
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-  .service{background:var(--bg);padding:32px 28px;transition:background .2s;}
-  .service:hover{background:var(--surface);}
-  .service .ic{width:38px;height:38px;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-  .service .ic svg{width:19px;height:19px;stroke:var(--green);}
-  .service h3{font-size:17px;font-weight:700;}
-  .service p{font-size:14px;color:var(--ink-soft);margin-top:8px;line-height:1.55;}
+  .services-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .service-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 16px;border-radius:999px;border:1px solid var(--border);
+    background:var(--surface);font-size:14px;font-weight:600;
+  }
+  .service-pill svg{width:16px;height:16px;stroke:var(--green);}
 
   /* PORTFOLIO */
   .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -165,33 +165,10 @@
   .work-card.empty .work-thumb{background:var(--surface-2);border:1px dashed var(--border);}
   .work-card.empty .work-thumb p{color:var(--ink-soft);font-size:13px;font-weight:600;text-align:center;padding:0 20px;}
 
-  /* ABOUT */
-  .about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
-  .about-photo{
-    aspect-ratio:4/5;border-radius:20px;
-    background:linear-gradient(165deg,var(--green-deep),var(--green));
-    border:1px solid var(--border);
-  }
-  .about-copy p{font-size:16px;line-height:1.75;color:var(--ink-soft);}
-  .about-copy p strong{color:var(--ink);}
-  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
-  .fact{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--surface);}
-  .fact span{display:block;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-weight:600;}
-  .fact strong{font-size:15px;font-weight:700;display:block;margin-top:4px;}
-
-  /* FAQ */
-  .faq-list{border-top:1px solid var(--border);}
-  details{border-bottom:1px solid var(--border);padding:22px 0;}
-  summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
-  summary::-webkit-details-marker{display:none;}
-  summary .chev{width:20px;height:20px;flex:none;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;transition:transform .2s;}
-  details[open] summary .chev{transform:rotate(45deg);}
-  details p{color:var(--ink-soft);font-size:14.5px;line-height:1.65;margin:14px 0 0;max-width:640px;}
-
   /* CTA */
   .cta{
     background:linear-gradient(165deg,var(--green-deep),var(--green));
-    border-radius:24px;padding:64px 48px;text-align:center;color:var(--on-green);
+    border-radius:24px;padding:44px 32px;text-align:center;color:var(--on-green);
   }
   .cta h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;color:#fff;}
   .cta p{color:rgba(255,255,255,0.75);margin-top:12px;font-size:15.5px;}
@@ -201,7 +178,7 @@
   .cta .btn-ghost{border-color:rgba(255,255,255,0.35);color:#fff;}
   .cta .btn-ghost:hover{border-color:#fff;}
 
-  footer{border-top:1px solid var(--border);padding:40px 0;}
+  footer{border-top:1px solid var(--border);padding:24px 0;}
   .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   .foot-links{display:flex;gap:20px;}
   .foot-links a{color:var(--ink-soft);font-size:13.5px;}
@@ -211,17 +188,13 @@
   @media(max-width:860px){
     .hero-grid{grid-template-columns:1fr;}
     .hero-art{height:340px;order:-1;}
-    .services-grid{grid-template-columns:1fr 1fr;}
     .work-grid{grid-template-columns:1fr 1fr;}
-    .about{grid-template-columns:1fr;}
-    .about-photo{max-width:280px;}
     .nav-links{display:none;}
   }
   @media(max-width:560px){
-    .services-grid{grid-template-columns:1fr;}
     .work-grid{grid-template-columns:1fr;}
-    .cta{padding:48px 24px;}
-    section{padding:72px 0;}
+    .cta{padding:36px 20px;}
+    section{padding:40px 0;}
   }
 </style>
 </head>
@@ -233,8 +206,6 @@
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-right">
@@ -281,42 +252,17 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" style="margin-bottom:20px;">
         <span class="eyebrow">Services</span>
-        <h2>What I edit</h2>
-        <p>Pick a format, send the raw footage, get back something worth posting.</p>
+        <h2 style="font-size:22px;">What I edit</h2>
       </div>
-      <div class="services-grid">
-        <div class="service">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"></rect><line x1="12" y1="18" x2="12" y2="18"></line></svg></div>
-          <h3>Shorts</h3>
-          <p>Fast-paced vertical edits built to hook in the first second and hold to the end.</p>
-        </div>
-        <div class="service">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 9h6v6H9z"></path></svg></div>
-          <h3>Reels</h3>
-          <p>Clean, on-trend edits tailored to how Instagram actually surfaces content.</p>
-        </div>
-        <div class="service">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div>
-          <h3>TikTok</h3>
-          <p>Native-feeling cuts, paced for the app, that don't look like an ad.</p>
-        </div>
-        <div class="service">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="14" rx="5"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><line x1="12" y1="18" x2="12" y2="22"></line></svg></div>
-          <h3>Talking Head</h3>
-          <p>Tight pacing, clean captions and jump cuts that keep the energy up.</p>
-        </div>
-        <div class="service">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8M12 8v8"></path></svg></div>
-          <h3>Podcast</h3>
-          <p>Long-form episodes turned into clean, postable clips people finish.</p>
-        </div>
-        <div class="service">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M10 9l5 3-5 3z"></path></svg></div>
-          <h3>YouTube</h3>
-          <p>Full-length edits with pacing built for watch time, not just a good intro.</p>
-        </div>
+      <div class="services-row">
+        <span class="service-pill"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"></rect></svg>Shorts</span>
+        <span class="service-pill"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 9h6v6H9z"></path></svg>Reels</span>
+        <span class="service-pill"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>TikTok</span>
+        <span class="service-pill"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="14" rx="5"></rect><path d="M5 11a7 7 0 0 0 14 0"></path></svg>Talking Head</span>
+        <span class="service-pill"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8M12 8v8"></path></svg>Podcast</span>
+        <span class="service-pill"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M10 9l5 3-5 3z"></path></svg>YouTube</span>
       </div>
     </div>
   </section>
@@ -342,58 +288,15 @@
         <div class="work-card empty">
           <div class="work-thumb"><p>More edits coming soon</p></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap about">
-      <div class="about-photo"></div>
-      <div class="about-copy">
-        <span class="eyebrow">About</span>
-        <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-top:14px;">Hey, I'm Rafael Lopes.</h2>
-        <p style="margin-top:18px;">I edit short-form video for creators and brands — <strong>shorts, reels, talking heads</strong>, whatever the format calls for. I keep it fast, clean, and built to keep people watching.</p>
-        <p>I work in <strong>Premiere Pro</strong> and I'm based in <strong>São Paulo (GMT-3)</strong>, so communication stays quick and delivery stays on time.</p>
-        <p>If that sounds like what you need, send me a message.</p>
-        <div class="about-facts">
-          <div class="fact"><span>Software</span><strong>Premiere Pro</strong></div>
-          <div class="fact"><span>Timezone</span><strong>São Paulo · GMT-3</strong></div>
-          <div class="fact"><span>Turnaround</span><strong>Fast delivery</strong></div>
-          <div class="fact"><span>Communication</span><strong>Clear & direct</strong></div>
+        <div class="work-card empty">
+          <div class="work-thumb"><p>More edits coming soon</p></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">FAQ</span>
-        <h2>Good to know</h2>
-      </div>
-      <div class="faq-list">
-        <details open>
-          <summary>How fast is delivery? <span class="chev">+</span></summary>
-          <p>Usually between 24-72 hours. Short clips (Shorts, Reels, TikTok) usually turn around quickly. Longer YouTube edits take more time. Exact timelines get confirmed before I start.</p>
-        </details>
-        <details>
-          <summary>How many revisions are included? <span class="chev">+</span></summary>
-          <p>A reasonable round of revisions is included with every edit. If something's off, we fix it.</p>
-        </details>
-        <details>
-          <summary>What do you need from me? <span class="chev">+</span></summary>
-          <p>Your raw footage or audio, plus any references or style examples you want me to match.</p>
-        </details>
-        <details>
-          <summary>How do we communicate? <span class="chev">+</span></summary>
-          <p>Mostly on Discord. Email and Telegram work too, whatever's easiest for you.</p>
-        </details>
-        <details>
-          <summary>How do I get started? <span class="chev">+</span></summary>
-          <p>Message me on Discord with what you need edited, and we'll take it from there.</p>
-        </details>
+        <div class="work-card empty">
+          <div class="work-thumb"><p>More edits coming soon</p></div>
+        </div>
+        <div class="work-card empty">
+          <div class="work-thumb"><p>More edits coming soon</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -416,10 +319,15 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
             Email
           </a>
-          <a href="https://t.me/rafaellpzzz" class="btn btn-ghost" target="_blank"
+          <a href="https://ytjobs.co/talent/profile/590256?r=794" class="btn btn-ghost" target="_blank"
    rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
-            Telegram
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M10 9l5 3-5 3z"></path></svg>
+            YTJobs
+          </a>
+          <a href="https://x.com/lopesediting" class="btn btn-ghost" target="_blank"
+   rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            X
           </a>
         </div>
       </div>
@@ -434,8 +342,6 @@
     <div class="foot-links">
       <a href="#work">Work</a>
       <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
     </div>
     <small>© 2026 Lopes Editing</small>
   </div>
