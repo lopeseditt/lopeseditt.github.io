@@ -1,2 +1,468 @@
-# lopeseditt.github.io
-Professional short-form video editor creating engaging content for YouTube Shorts, TikTok, Reels, and creators worldwide.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lopes Editing — Short-Form Video Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --surface:#F4F8F5;
+    --surface-2:#EAF1EC;
+    --ink:#0E1512;
+    --ink-soft:#57645C;
+    --green-deep:#0B3D2E;
+    --green:#145C3F;
+    --green-bright:#1E7A4F;
+    --on-green:#F4FBF6;
+    --border:#E1E9E3;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(11,61,46,0.05);
+    --shadow-lg:0 20px 50px rgba(11,61,46,0.10);
+  }
+  [data-theme="dark"]{
+    --bg:#0A0F0D;
+    --surface:#101713;
+    --surface-2:#141C17;
+    --ink:#EFF4F1;
+    --ink-soft:#8FA098;
+    --green:#1E7A4F;
+    --green-bright:#27995F;
+    --on-green:#08120D;
+    --border:#1C2620;
+    --shadow:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-lg:0 20px 60px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease,color .25s ease;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Manrope',sans-serif;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--green-bright);
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green-bright);}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1120px;margin:0 auto;
+  }
+  .brand{font-size:19px;font-weight:800;display:flex;align-items:center;gap:8px;}
+  .brand .dot{width:9px;height:9px;border-radius:3px;background:var(--green);transform:rotate(45deg);}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .icon-btn{
+    width:38px;height:38px;border-radius:10px;border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;background:var(--surface);
+    cursor:pointer;color:var(--ink-soft);
+  }
+  .icon-btn:hover{color:var(--ink);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:11px 20px;border-radius:10px;font-weight:600;font-size:14.5px;
+    cursor:pointer;border:1px solid transparent;white-space:nowrap;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{background:var(--green);color:var(--on-green);}
+  .btn-primary:hover{background:var(--green-bright);}
+  .btn-ghost{background:transparent;border-color:var(--border);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--green);}
+  .menu-toggle{display:none;}
+
+  /* HERO */
+  .hero{padding:88px 0 64px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .hero h1{font-size:clamp(34px,4.4vw,54px);font-weight:800;line-height:1.08;margin-top:18px;}
+  .hero p.lead{font-size:17.5px;color:var(--ink-soft);margin-top:20px;max-width:460px;line-height:1.6;}
+  .hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
+
+  .hero-art{position:relative;height:420px;}
+  .card{
+    position:absolute;width:180px;height:320px;border-radius:20px;
+    box-shadow:var(--shadow-lg);border:1px solid var(--border);
+    background:linear-gradient(160deg,var(--green-deep),var(--green));
+    overflow:hidden;
+  }
+  .card .bar{position:absolute;top:14px;left:14px;right:14px;height:3px;border-radius:3px;background:rgba(255,255,255,0.25);}
+  .card .bar::after{content:"";position:absolute;left:0;top:0;bottom:0;width:62%;background:#fff;border-radius:3px;}
+  .card .play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,0.14);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card .play::after{content:"";border-left:14px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px;}
+  .card .caption{position:absolute;bottom:16px;left:14px;right:14px;height:8px;border-radius:4px;background:rgba(255,255,255,0.22);}
+  .card .caption.short{width:55%;}
+  .card-a{left:0;top:40px;transform:rotate(-9deg);z-index:1;background:linear-gradient(160deg,#0e2c22,#123f2e);opacity:.85;}
+  .card-b{left:100px;top:0;transform:rotate(4deg);z-index:2;}
+  .card-c{left:60px;top:64px;transform:rotate(-2deg);z-index:3;background:linear-gradient(165deg,var(--green),var(--green-bright));}
+  .badge{
+    position:absolute;right:6px;bottom:34px;z-index:4;
+    background:var(--bg);border:1px solid var(--border);border-radius:12px;
+    padding:10px 14px;box-shadow:var(--shadow-lg);
+    display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;
+  }
+  .badge svg{width:16px;height:16px;}
+
+  /* STRIP */
+  .strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);}
+  .strip .wrap{padding:22px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .strip p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+  .strip strong{color:var(--ink);}
+
+  section{padding:96px 0;}
+  .section-head{max-width:560px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(26px,3vw,34px);font-weight:800;margin-top:14px;}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:15.5px;line-height:1.6;}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+  .service{background:var(--bg);padding:32px 28px;transition:background .2s;}
+  .service:hover{background:var(--surface);}
+  .service .ic{width:38px;height:38px;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .service .ic svg{width:19px;height:19px;stroke:var(--green);}
+  .service h3{font-size:17px;font-weight:700;}
+  .service p{font-size:14px;color:var(--ink-soft);margin-top:8px;line-height:1.55;}
+
+  /* PORTFOLIO */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .work-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface);}
+  .work-thumb{aspect-ratio:9/13;background:linear-gradient(160deg,var(--green-deep),var(--green));position:relative;display:flex;align-items:center;justify-content:center;}
+  .work-thumb .play{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;}
+  .work-thumb .play::after{content:"";border-left:16px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px;}
+  .work-meta{padding:16px 18px;}
+  .work-meta h3{font-size:14.5px;font-weight:700;}
+  .work-meta span{font-size:12.5px;color:var(--ink-soft);}
+  .work-card.empty{display:flex;align-items:center;justify-content:center;background:var(--bg);}
+  .work-card.empty .work-thumb{background:var(--surface-2);border:1px dashed var(--border);}
+  .work-card.empty .work-thumb p{color:var(--ink-soft);font-size:13px;font-weight:600;text-align:center;padding:0 20px;}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
+  .about-photo{
+    aspect-ratio:4/5;border-radius:20px;
+    background:linear-gradient(165deg,var(--green-deep),var(--green));
+    border:1px solid var(--border);
+  }
+  .about-copy p{font-size:16px;line-height:1.75;color:var(--ink-soft);}
+  .about-copy p strong{color:var(--ink);}
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
+  .fact{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--surface);}
+  .fact span{display:block;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-weight:600;}
+  .fact strong{font-size:15px;font-weight:700;display:block;margin-top:4px;}
+
+  /* FAQ */
+  .faq-list{border-top:1px solid var(--border);}
+  details{border-bottom:1px solid var(--border);padding:22px 0;}
+  summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  summary::-webkit-details-marker{display:none;}
+  summary .chev{width:20px;height:20px;flex:none;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;transition:transform .2s;}
+  details[open] summary .chev{transform:rotate(45deg);}
+  details p{color:var(--ink-soft);font-size:14.5px;line-height:1.65;margin:14px 0 0;max-width:640px;}
+
+  /* CTA */
+  .cta{
+    background:linear-gradient(165deg,var(--green-deep),var(--green));
+    border-radius:24px;padding:64px 48px;text-align:center;color:var(--on-green);
+  }
+  .cta h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;color:#fff;}
+  .cta p{color:rgba(255,255,255,0.75);margin-top:12px;font-size:15.5px;}
+  .cta-actions{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap;}
+  .cta .btn-primary{background:#fff;color:var(--green-deep);}
+  .cta .btn-primary:hover{background:#EAF3EE;}
+  .cta .btn-ghost{border-color:rgba(255,255,255,0.35);color:#fff;}
+  .cta .btn-ghost:hover{border-color:#fff;}
+
+  footer{border-top:1px solid var(--border);padding:40px 0;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-links{display:flex;gap:20px;}
+  .foot-links a{color:var(--ink-soft);font-size:13.5px;}
+  .foot-links a:hover{color:var(--ink);}
+  footer small{color:var(--ink-soft);font-size:13px;}
+
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{height:340px;order:-1;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .work-grid{grid-template-columns:1fr 1fr;}
+    .about{grid-template-columns:1fr;}
+    .about-photo{max-width:280px;}
+    .nav-links{display:none;}
+  }
+  @media(max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr;}
+    .cta{padding:48px 24px;}
+    section{padding:72px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="brand"><span class="dot"></span>Lopes Editing</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path></svg>
+      </button>
+      <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Video Editor · Short-Form</span>
+        <h1>Short-form video editing for creators and brands.</h1>
+        <p class="lead">Shorts, Reels and TikToks. Fast turnarounds, clean cuts, built to hold attention from the first second.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Message me on Discord</a>
+          <a href="#work" class="btn btn-ghost">See my work</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="card card-a"></div>
+        <div class="card card-b"><div class="bar"></div><div class="play"></div><div class="caption"></div><div class="caption short" style="bottom:28px;"></div></div>
+        <div class="card card-c"></div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg>
+          High retention edits
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <p>Editor behind a personal Shorts channel that passed <strong>55,000+ views</strong> — built from scratch, one channel, no ad spend.</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <h2>What I edit</h2>
+        <p>Pick a format, send the raw footage, get back something worth posting.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"></rect><line x1="12" y1="18" x2="12" y2="18"></line></svg></div>
+          <h3>Shorts</h3>
+          <p>Fast-paced vertical edits built to hook in the first second and hold to the end.</p>
+        </div>
+        <div class="service">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 9h6v6H9z"></path></svg></div>
+          <h3>Reels</h3>
+          <p>Clean, on-trend edits tailored to how Instagram actually surfaces content.</p>
+        </div>
+        <div class="service">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div>
+          <h3>TikTok</h3>
+          <p>Native-feeling cuts, paced for the app, that don't look like an ad.</p>
+        </div>
+        <div class="service">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="14" rx="5"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><line x1="12" y1="18" x2="12" y2="22"></line></svg></div>
+          <h3>Talking Head</h3>
+          <p>Tight pacing, clean captions and jump cuts that keep the energy up.</p>
+        </div>
+        <div class="service">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8M12 8v8"></path></svg></div>
+          <h3>Podcast</h3>
+          <p>Long-form episodes turned into clean, postable clips people finish.</p>
+        </div>
+        <div class="service">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M10 9l5 3-5 3z"></path></svg></div>
+          <h3>YouTube</h3>
+          <p>Full-length edits with pacing built for watch time, not just a good intro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Portfolio</span>
+        <h2>Recent work</h2>
+        <p>New edits get added here regularly — this is a growing library, not a finished one.</p>
+      </div>
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="work-thumb" style="background:#000;">
+            <iframe src="https://www.youtube.com/embed/CX5gbZGEzno" title="Shorts edit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
+          </div>
+          <div class="work-meta"><h3>Shorts edit</h3><span>Shorts · YouTube</span></div>
+        </div>
+        <div class="work-card empty">
+          <div class="work-thumb"><p>More edits coming soon</p></div>
+        </div>
+        <div class="work-card empty">
+          <div class="work-thumb"><p>More edits coming soon</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-photo"></div>
+      <div class="about-copy">
+        <span class="eyebrow">About</span>
+        <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-top:14px;">Hey, I'm Rafael Lopes.</h2>
+        <p style="margin-top:18px;">I edit short-form video for creators and brands — <strong>shorts, reels, talking heads</strong>, whatever the format calls for. I keep it fast, clean, and built to keep people watching.</p>
+        <p>I work in <strong>Premiere Pro</strong> and I'm based in <strong>São Paulo (GMT-3)</strong>, so communication stays quick and delivery stays on time.</p>
+        <p>If that sounds like what you need, send me a message.</p>
+        <div class="about-facts">
+          <div class="fact"><span>Software</span><strong>Premiere Pro</strong></div>
+          <div class="fact"><span>Timezone</span><strong>São Paulo · GMT-3</strong></div>
+          <div class="fact"><span>Turnaround</span><strong>Fast delivery</strong></div>
+          <div class="fact"><span>Communication</span><strong>Clear & direct</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Good to know</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>How fast is delivery? <span class="chev">+</span></summary>
+          <p>Short clips (Shorts, Reels, TikTok) usually turn around quickly. Longer YouTube edits take more time. Exact timelines get confirmed before I start.</p>
+        </details>
+        <details>
+          <summary>How many revisions are included? <span class="chev">+</span></summary>
+          <p>A reasonable round of revisions is included with every edit. If something's off, we fix it.</p>
+        </details>
+        <details>
+          <summary>What do you need from me? <span class="chev">+</span></summary>
+          <p>Your raw footage or audio, plus any references or style examples you want me to match.</p>
+        </details>
+        <details>
+          <summary>How do we communicate? <span class="chev">+</span></summary>
+          <p>Mostly on Discord. Email and Telegram work too, whatever's easiest for you.</p>
+        </details>
+        <details>
+          <summary>How do I get started? <span class="chev">+</span></summary>
+          <p>Message me on Discord with what you need edited, and we'll take it from there.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta">
+        <span class="eyebrow" style="color:#fff;">Get in touch</span>
+        <h2 style="margin-top:14px;">Let's Work Together</h2>
+        <p>Got a project in mind? Reach out and let's talk about it.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Discord
+          </a>
+          <a href="#" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
+            Email
+          </a>
+          <a href="#" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+            Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <a href="#top" class="brand" style="font-size:15px;"><span class="dot"></span>Lopes Editing</a>
+    <div class="foot-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <small>© 2026 Lopes Editing</small>
+  </div>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+  const sunPath = 'M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4';
+  const moonPath = 'M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z';
+
+  let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  applyTheme();
+
+  toggle.addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    applyTheme();
+  });
+
+  function applyTheme(){
+    if(theme === 'dark'){
+      root.setAttribute('data-theme','dark');
+      icon.innerHTML = '<path d="' + moonPath + '"></path>';
+    } else {
+      root.removeAttribute('data-theme');
+      icon.innerHTML = '<circle cx="12" cy="12" r="4.5"></circle><path d="' + sunPath + '"></path>';
+    }
+  }
+</script>
+
+</body>
+</html>
